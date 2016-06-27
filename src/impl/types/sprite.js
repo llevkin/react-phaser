@@ -7,13 +7,13 @@ var treeUtils = require('../tree-utils'),
     
     initSprite = function (node, tree) {
         var props = node.props;
-        node.obj = new Phaser.Sprite(treeUtils.game(tree), props.x, props.y, props.assetKey);
+        node.obj = new Phaser.Sprite(treeUtils.game(tree), props.x, props.y, props.texture);
         treeUtils.addDisplayObject(node, tree);
         updateSprite(node, null, tree);
     },
 
     killSprite = function (node, tree) {
-        node.obj.kill();
+        node.obj && node.obj.destroy();
     };
 
 module.exports = {

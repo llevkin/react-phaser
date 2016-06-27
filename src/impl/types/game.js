@@ -31,6 +31,9 @@ var treeUtils = require('../tree-utils'),
                                 case 'spritesheet':
                                     game.load.spritesheet(key, asset.src, asset.width, asset.height);
                                     break;
+                                case 'atlas':
+                                    game.load.atlas(key, asset.src, asset.json, null, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+                                    break;
                             }
                         });
                     }
@@ -43,9 +46,8 @@ var treeUtils = require('../tree-utils'),
                     }
 
                     nodeMethods.initChildren(node, tree);
-
-                    if (node.props.stateName) {
-                        game.state.start(node.props.stateName);
+                    if (node.props.state) {
+                        game.state.start(node.props.state);
                     }
                 },
                 update: function () {
@@ -55,12 +57,11 @@ var treeUtils = require('../tree-utils'),
                 }
             },
 
-            game = new Phaser.Game(props.width, props.height, props.mode || Phaser.AUTO, '', gameImpl),
+            game = new Phaser.Game(props.width, props.height, props.mode || Phaser.AUTO, node.props.container, gameImpl),
             context = {
                 game: game,
                 nodes: tree.byname
             };
-
         node.obj = game;
         node.context = context;
     };

@@ -27,6 +27,8 @@ var invariant = require('invariant'),
     generatePointPropMap = function (props) {
         return props.reduce(function (acc, prop) {
             acc[prop] = function (node, value, prevValue, isNew) {
+                if (!node.obj)
+                    return;
                 var point = node.obj[prop];
                 if (isNew || value.x !== prevValue.x) {
                     point.x = value.x;

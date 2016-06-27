@@ -1,4 +1,3 @@
-
 var createReactAnything = require('react-anything');
 var phaserImplementation = require('./phaser-implementation');
 
