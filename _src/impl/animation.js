@@ -2,7 +2,7 @@ var util = require('util');
 var Node = require('./node');
 
 function Animation() {
-    this.super('constructor', arguments);
+    this.super(Animation, 'constructor', arguments);
 }
 util.inherits(Animation, Node);
 

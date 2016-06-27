@@ -2,7 +2,7 @@ var util = require('util');
 var Node = require('./node');
 
 function State() {
-    this.super('constructor', arguments);
+    this.super(State, 'constructor', arguments);
 }
 util.inherits(State, Node);
 

@@ -1,22 +1,21 @@
-var util = require('util');
-var Node = require('./node');
+var util            = require('util');
+var DisplayObject   = require('./displayObject');
 
 function Sprite() {
-    this.super('constructor', arguments);
+    this.super(Sprite, 'constructor', arguments);
 }
-util.inherits(Sprite, Node);
+util.inherits(Sprite, DisplayObject);
 
 Sprite.prototype.init = function() {
-    this.obj = new Phaser.Sprite(this.game, this.props.x, this.props.y, this.props.texture, this.props.frame || 0);
-    this.group.addChild(this.obj);
-    this.super('init');
+    this.obj = new Phaser.Sprite(this.game);
+    this.super(Sprite, 'init');
 };
 
-Sprite.prototype.clear = function() {
+Sprite.prototype.update = function() {
     if (!this.obj)
         return;
-    this.obj.destroy();
-    this.obj = null;
+    this.obj.loadTexture(this.props.texture, this.props.frame || this.obj.frame);
+    this.super(Sprite, 'update');
 };
 
 module.exports = Sprite;

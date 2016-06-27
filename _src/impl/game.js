@@ -2,7 +2,7 @@ var util = require('util');
 var Node = require('./node');
 
 function Game() {
-    this.super('constructor', arguments);
+    this.super(Game, 'constructor', arguments);
 }
 util.inherits(Game, Node);
 

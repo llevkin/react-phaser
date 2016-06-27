@@ -79,8 +79,8 @@ Object.defineProperties(Node.prototype, {
     },
 
     super: {
-        value: function(name, args) {
-            return this.constructor.super_.prototype[name].apply(this, args);
+        value: function(Class, name, args) {
+            return Class.super_.prototype[name].apply(this, args);
         }
     },
 
