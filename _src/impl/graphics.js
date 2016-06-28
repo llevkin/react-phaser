@@ -55,7 +55,72 @@ Graphics.prototype.factory = {
             props.width  || 0,
             props.height || 0
         );
-    }
+    },
+
+    roundedrect: function (props) {
+        this.obj.drawRoundedRect(
+            props.x || 0,
+            props.y || 0,
+            props.width  || 0,
+            props.height || 0,
+            props.radius || 0
+        );
+    },
+
+    circle: function (props) {
+        this.obj.drawCircle(
+            props.x || 0,
+            props.y || 0,
+            props.diameter || 0
+        );
+    },
+
+    ellipse: function (props) {
+        this.obj.drawEllipse(
+            props.x || 0,
+            props.y || 0,
+            props.width  || 0,
+            props.height || 0
+        );
+    },
+
+    line: function (props) {
+        this.obj.moveTo(
+            props.x1 || 0,
+            props.y1 || 0
+        );
+        this.obj.lineTo(
+            props.x2 || 0,
+            props.y2 || 0
+        );
+    },
+
+    lineto: function (props) {
+        this.obj.lineTo(
+            props.x || 0,
+            props.y || 0
+        );
+    },
+
+    quadraticcurveto: function (props) {
+        this.obj.quadraticCurveTo(
+            props.cpx,
+            props.cpy,
+            props.x,
+            props.y
+        );
+    },
+
+    beziercurveto: function (props) {
+        this.obj.quadraticCurveTo(
+            props.cpx,
+            props.cpy,
+            props.cpx2,
+            props.cpy2,
+            props.x,
+            props.y
+        );
+    },
 
 };
 
