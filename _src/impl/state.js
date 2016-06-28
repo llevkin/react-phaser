@@ -60,13 +60,13 @@ Object.defineProperties(State.prototype, {
 
     width: {
         get: function() {
-            return this.obj.world.width;
+            return this.obj.game.world.width;
         }
     },
 
     height: {
         get: function() {
-            return this.obj.world.height;
+            return this.obj.game.world.height;
         }
     },
 
