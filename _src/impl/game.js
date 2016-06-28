@@ -34,4 +34,32 @@ Game.prototype.update = function() {
     this.tree.byname[this.props.state]._init();
 };
 
+Object.defineProperties(Game.prototype, {
+
+    x: {
+        get: function() {
+            return 0;
+        }
+    },
+
+    y: {
+        get: function() {
+            return 0;
+        }
+    },
+
+    width: {
+        get: function() {
+            return this.obj.world.width;
+        }
+    },
+
+    height: {
+        get: function() {
+            return this.obj.world.height;
+        }
+    },
+
+});
+
 module.exports = Game;

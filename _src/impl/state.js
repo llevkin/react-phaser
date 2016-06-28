@@ -44,4 +44,32 @@ State.prototype._init = function(node) {
     });
 };
 
+Object.defineProperties(State.prototype, {
+
+    x: {
+        get: function() {
+            return 0;
+        }
+    },
+
+    y: {
+        get: function() {
+            return 0;
+        }
+    },
+
+    width: {
+        get: function() {
+            return this.obj.world.width;
+        }
+    },
+
+    height: {
+        get: function() {
+            return this.obj.world.height;
+        }
+    },
+
+});
+
 module.exports = State;

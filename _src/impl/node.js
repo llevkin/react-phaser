@@ -120,5 +120,36 @@ Object.defineProperties(Node.prototype, {
 
 });
 
+Object.defineProperties(Node.prototype, {
+
+    x: {
+        get: function() {
+            console.warn('"x" getter called in '+this.constructor.name);
+            return 0;
+        }
+    },
+
+    y: {
+        get: function() {
+            console.warn('"y" getter called in '+this.constructor.name);
+            return 0;
+        }
+    },
+
+    width: {
+        get: function() {
+            console.warn('"width" getter called in '+this.constructor.name);
+            return 0;
+        }
+    },
+
+    height: {
+        get: function() {
+            console.warn('"height" getter called in '+this.constructor.name);
+            return 0;
+        }
+    },
+
+});
 
 module.exports = Node;

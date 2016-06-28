@@ -35,8 +35,11 @@ Animation.prototype.update = function() {
     if (this.parentNode.obj.animations.currentAnim)
         current = this.parentNode.obj.animations.currentAnim;
     this.obj = this.parentNode.obj.animations.add(this.props.id, this._frame(this.props.frames), this.props.fps, this.props.loop);
-    if (this.props.play)
+    if (this.props.play) {
+        this.parentNode.obj.scale.x = this.props.invert.x ? -1 : 1;
+        this.parentNode.obj.scale.y = this.props.invert.y ? -1 : 1;
         this.obj.play();
+    }
     else if (current)
         current.play();
 };

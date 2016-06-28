@@ -4,5 +4,6 @@ module.exports = {
     game:       require('./game'),
     state:      require('./state'),
     sprite:     require('./sprite'),
+    group:      require('./group'),
     animation:  require('./animation'),
 };
