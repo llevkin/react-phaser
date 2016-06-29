@@ -16,6 +16,7 @@ Game.prototype.mount = function() {
         },
         create: function() {
             that.props.state && that.game.state.start(that.props.state);
+            that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
         },
         update: function() {
         }
@@ -31,7 +32,8 @@ Game.prototype.update = function() {
         item._clear();
     }
     this.game.state.start(this.props.state);
-    this.tree.byname[this.props.state]._init();
+    if (this.tree.byname[this.props.state])
+        this.tree.byname[this.props.state]._init();
 };
 
 Object.defineProperties(Game.prototype, {
