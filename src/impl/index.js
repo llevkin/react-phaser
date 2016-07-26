@@ -7,4 +7,6 @@ module.exports = {
     group:     require('./group'),
     animation: require('./animation'),
     graphics:  require('./graphics'),
+    text:      require('./text'),
+
 };

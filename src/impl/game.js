@@ -23,6 +23,10 @@ Game.prototype.mount = function() {
     });
 };
 
+Game.prototype.unmount = function() {
+    this.obj.destroy();
+};
+
 Game.prototype.update = function() {
     var item;
     for (var i = 0, l = this.children.length; i < l; i++) {
