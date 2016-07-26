@@ -10,6 +10,8 @@ Game.prototype.mount = function() {
     var that = this;
     this.obj = new Phaser.Game(this.props.width, this.props.height, this.props.mode || Phaser.AUTO, this.props.container, {
         init: function() {
+            that.props.onFileComplete && this.game.load.onFileComplete.add(that.props.onFileComplete);
+            that.props.onFileError && this.game.load.onFileError.add(that.props.onFileError);
         },
         preload: function() {
             that.preload();

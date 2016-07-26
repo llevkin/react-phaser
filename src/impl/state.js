@@ -10,6 +10,8 @@ State.prototype.mount = function() {
     var that = this;
     this.obj = this.game.state.add(this.props.name, {
         init: function() {
+            that.props.onFileComplete && this.game.load.onFileComplete.add(that.props.onFileComplete);
+            that.props.onFileError && this.game.load.onFileError.add(that.props.onFileError);
         },
         preload: function() {
             that.preload();
@@ -26,7 +28,7 @@ State.prototype.mount = function() {
 };
 
 State.prototype._clear = function(node) {
-    var item, that = this;
+    var that = this;
     if (!node)
         node = this;
     node.forEach(function(item) {
