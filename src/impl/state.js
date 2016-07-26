@@ -18,6 +18,7 @@ State.prototype.mount = function() {
             that.forEach(function(item) {
                 item.invoke('init');
             });
+            that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
         },
         update: function() {
         }
