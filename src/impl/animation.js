@@ -32,6 +32,8 @@ Animation.prototype.init = function() {
 
 Animation.prototype.update = function() {
     var current;
+    if (!this.parentNode.obj)
+        return;
     if (this.parentNode.obj.animations.currentAnim)
         current = this.parentNode.obj.animations.currentAnim;
     this.obj = this.parentNode.obj.animations.add(this.props.id, this._frame(this.props.frames), this.props.fps, this.props.loop);

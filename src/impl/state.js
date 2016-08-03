@@ -21,6 +21,7 @@ State.prototype.mount = function() {
                 item.invoke('init');
             });
             that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
+            that.props.bounds && this.game.world.setBounds.apply(this.game.world, that.props.bounds);
         },
         update: function() {
         }
