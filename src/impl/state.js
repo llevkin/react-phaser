@@ -23,7 +23,11 @@ State.prototype.mount = function() {
             that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
             that.props.bounds && this.game.world.setBounds.apply(this.game.world, that.props.bounds);
         },
-        update: function() {
+        render: function(game) {
+            that.props.onRender && that.props.onRender(game);
+        },
+        update: function(game) {
+            that.props.onUpdate && that.props.onUpdate(game);
         }
     });
 };
@@ -64,13 +68,13 @@ Object.defineProperties(State.prototype, {
 
     width: {
         get: function() {
-            return this.obj.game.world.width;
+            return this.obj.game.width;
         }
     },
 
     height: {
         get: function() {
-            return this.obj.game.world.height;
+            return this.obj.game.height;
         }
     },
 

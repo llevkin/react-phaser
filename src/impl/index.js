@@ -10,6 +10,6 @@ module.exports = {
     text:      require('./text'),
 
     events:    require('./input/events'),
-    input:    require('./input/input'),
+    input:     require('./input/input'),
 
 };

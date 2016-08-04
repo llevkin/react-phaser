@@ -58,13 +58,13 @@ Object.defineProperties(Game.prototype, {
 
     width: {
         get: function() {
-            return this.obj.world.width;
+            return this.obj.width;
         }
     },
 
     height: {
         get: function() {
-            return this.obj.world.height;
+            return this.obj.height;
         }
     },
 

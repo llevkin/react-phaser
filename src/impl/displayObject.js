@@ -43,6 +43,9 @@ DisplayObject.prototype.update = function() {
         this.obj.scale.x = 'x' in this.props.scale ? this.props.scale.x : 1;
         this.obj.scale.y = 'y' in this.props.scale ? this.props.scale.y : 1;
     }
+    if (this.props.fixedToCamera) {
+        this.obj.fixedToCamera = this.props.fixedToCamera;
+    }
     this.super(DisplayObject, 'update');
 };
 
