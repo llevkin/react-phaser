@@ -22,6 +22,10 @@ State.prototype.mount = function() {
             });
             that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
             that.props.bounds && this.game.world.setBounds.apply(this.game.world, that.props.bounds);
+            if (that.props.focus) {
+                this.game.camera.x = that.props.focus[0];
+                this.game.camera.y = that.props.focus[1];
+            }
         },
         render: function(game) {
             that.props.onRender && that.props.onRender(game);
@@ -43,7 +47,7 @@ State.prototype._clear = function(node) {
 };
 
 State.prototype._init = function(node) {
-    var item, that = this;
+    var that = this;
     if (!node)
         node = this;
     node.forEach(function(item) {

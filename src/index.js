@@ -1,4 +1,4 @@
-var createReactAnything  = require('react-anything');
+var createReactAnything  = require('react-anything/src/native');
 var phaserImplementation = require('./tree');
 var ReactPhaser          = createReactAnything(phaserImplementation.impl);
 var React                = ReactPhaser.React;

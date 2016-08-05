@@ -1,6 +1,8 @@
 var util            = require('util');
 var DisplayObject   = require('./displayObject');
 
+var events = ['onChildInputDown', 'onChildInputOut', 'onChildInputOver', 'onChildInputUp'];
+
 function Group() {
     this.super(Group, 'constructor', arguments);
 }
@@ -11,9 +13,20 @@ Group.prototype.init = function() {
     this.super(Group, 'init');
 };
 
-Group.prototype.update = function() {
+Group.prototype.update = function(prevProps) {
+    var event;
     if (!this.obj)
         return;
+    if ('inputEnableChildren' in this.props)
+        this.obj.inputEnableChildren = this.props.inputEnableChildren;
+    for (var i = 0; i < events.length; i++) {
+        event = events[i];
+        if (event in this.props) {
+            if (event in prevProps)
+                this.obj[event].remove(prevProps[event]);
+            this.obj[event].add(this.props[event]);
+        }
+    }
     this.super(Group, 'update');
 };
 

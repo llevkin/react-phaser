@@ -4,7 +4,6 @@ function Node(data) {
     this.props       = data.props;
     this.parent      = data.parent;
     this.children    = [];
-    this.initialized = false;
     this.obj         = null;
     this.tree        = data.tree;
 }

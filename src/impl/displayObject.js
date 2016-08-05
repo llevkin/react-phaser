@@ -14,6 +14,14 @@ DisplayObject._relative = function(object, prop, parentProp) {
     return parseInt(object.props[prop], 10) * object.parentNode[parentProp] / 100;
 };
 
+DisplayObject.prototype.mount = function() {
+    try {
+        this.init();
+    } catch (e) {
+        console.warn(this.constructor.name + ' : ' + e.message);
+    }
+};
+
 DisplayObject.prototype.init = function() {
     this.group.addChild(this.obj);
     this.update();
