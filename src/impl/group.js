@@ -9,6 +9,7 @@ function Group() {
 util.inherits(Group, DisplayObject);
 
 Group.prototype.init = function() {
+    console.log('new');
     this.obj = new Phaser.Group(this.game);
     this.super(Group, 'init');
 };
