@@ -15,6 +15,8 @@ Sprite.prototype.update = function() {
     if (!this.obj)
         return;
     this.obj.loadTexture(this.props.texture, this.props.frame || this.obj.frame);
+    'width' in this.props   && (this.obj.width = DisplayObject._relative(this, 'width', 'width'));
+    'height' in this.props  && (this.obj.height = DisplayObject._relative(this, 'height', 'height'));
     this.super(Sprite, 'update');
 };
 
