@@ -54,6 +54,9 @@ DisplayObject.prototype.update = function() {
     if (this.props.fixedToCamera) {
         this.obj.fixedToCamera = this.props.fixedToCamera;
     }
+    if ('data' in this.props) {
+        _.merge(this.obj.data, this.props.data);
+    }
     this.super(DisplayObject, 'update');
 };
 
