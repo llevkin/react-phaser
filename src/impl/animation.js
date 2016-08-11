@@ -30,10 +30,6 @@ Animation.prototype.init = function() {
     this.update();
 };
 
-Animation.prototype.mount = function() {
-    this.update();
-};
-
 Animation.prototype.update = function() {
     var current;
     if (!this.parentNode.obj)
