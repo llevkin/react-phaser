@@ -20,7 +20,10 @@ Animation.prototype._frame = function(frame) {
             memo.push(parseInt(item, 10));
         else {
             [start, finish] = item.split('-');
-            memo.push.apply(memo, _.range(start | 0, (finish | 0) + 1));
+            if (start < finish)
+                memo.push.apply(memo, _.range(start | 0, (finish | 0) + 1));
+            else
+                memo.push.apply(memo, _.range(finish | 0, (start | 0) + 1).reverse());
         }
         return memo;
     }, []);
@@ -38,8 +41,8 @@ Animation.prototype.update = function() {
         current = this.parentNode.obj.animations.currentAnim;
     this.obj = this.parentNode.obj.animations.add(this.props.id, this._frame(this.props.frames), this.props.fps, this.props.loop);
     if (this.props.play) {
-        this.parentNode.obj.scale.x = this.props.invert.x ? -1 : 1;
-        this.parentNode.obj.scale.y = this.props.invert.y ? -1 : 1;
+        this.parentNode.obj.scale.x = this.props.invert && this.props.invert.x ? -1 : 1;
+        this.parentNode.obj.scale.y = this.props.invert && this.props.invert.y ? -1 : 1;
         this.obj.play();
     }
     else if (current)
