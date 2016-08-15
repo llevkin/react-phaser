@@ -37,7 +37,6 @@ Input.prototype.update = function(prevProps) {
         if (prevProps)
             this.root.obj.input[this.props.name].remove(prevProps.callback);
         this.root.obj.input[this.props.name].add(this.props.callback);
-
     }
 };
 
