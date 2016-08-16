@@ -18,7 +18,7 @@ DisplayObject.prototype.mount = function() {
     try {
         this.init();
     } catch (e) {
-        console.warn(this.constructor.name + ' : ' + e.message);
+        // console.warn(this.constructor.name + ' : ' + e.message);
     }
 };
 
