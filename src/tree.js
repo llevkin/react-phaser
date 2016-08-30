@@ -37,7 +37,9 @@ var tree        = { root: null, nodes: {}, byname: {} },
             },
             update: function (node, nextProps, prevProps) {
                 node.props = nextProps;
-                node.update && node.update(prevProps);
+                try {
+                    node.update && node.update(prevProps);
+                } catch (e) {}
                 if (nextProps.name !== prevProps.name) {
                     if (prevProps.name) {
                         delete tree.byname[prevProps.name];

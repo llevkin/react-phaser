@@ -89,6 +89,8 @@ Object.defineProperties(Node.prototype, {
                  return;
              Object.keys(this.props.assets).forEach(function (key) {
                  var asset = this.props.assets[key];
+                 if (this.game.cache.checkImageKey(key))
+                     return;
                  switch (asset.type) {
                      case 'image':
                          this.game.load.image(key, asset.src);
@@ -97,8 +99,7 @@ Object.defineProperties(Node.prototype, {
                          this.game.load.spritesheet(key, asset.src, asset.width, asset.height);
                          break;
                      case 'atlas':
-                         if (!this.game.cache.checkImageKey(key))
-                            this.game.load.atlas(key, asset.src, asset.json, null, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+                         this.game.load.atlas(key, asset.src, asset.json, null, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
                          break;
                  }
              }.bind(this));
