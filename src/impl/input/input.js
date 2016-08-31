@@ -20,7 +20,6 @@ function Input() {
 util.inherits(Input, Node);
 
 Input.prototype.init = function() {
-    this.root.obj.input.addMoveCallback(callback);
     this.update();
 };
 
@@ -28,6 +27,8 @@ Input.prototype.update = function(prevProps) {
     this.super(Input, 'update');
     if (!this.root.obj)
         return;
+    this.root.obj.input.deleteMoveCallback(callback);
+    this.root.obj.input.addMoveCallback(callback);
     if (this.props.name === 'moveCallback') {
         if (prevProps)
             this.root.obj.input.deleteMoveCallback(prevProps.callback);

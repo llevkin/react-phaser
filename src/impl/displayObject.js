@@ -64,7 +64,6 @@ DisplayObject.prototype.clear = function() {
     if (!this.obj)
         return;
     this.obj.destroy(true);
-    this.obj = null;
     this.super(DisplayObject, 'clear');
 };
 

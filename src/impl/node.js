@@ -13,6 +13,7 @@ Node.prototype.init = function() {
 };
 
 Node.prototype.clear = function() {
+    this.obj = null;
 };
 
 Node.prototype.mount = function() {
@@ -22,6 +23,7 @@ Node.prototype.childrenMount = function() {
 };
 
 Node.prototype.unmount = function() {
+    this.forEach(function (item) { item.invoke('clear'); });
     this.clear();
 };
 
@@ -29,8 +31,9 @@ Node.prototype.update = function() {
 };
 
 Node.prototype.forEach = function(callback) {
-    for (var i = 0, l = this.children.length; i < l; i++)
-        callback.call(this, this.nodes[this.children[i]]);
+    if (this.children)
+        for (var i = 0, l = this.children.length; i < l; i++)
+            callback.call(this, this.nodes[this.children[i]]);
 };
 
 Object.defineProperties(Node.prototype, {

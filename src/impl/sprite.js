@@ -12,7 +12,7 @@ Sprite.prototype.init = function() {
 };
 
 Sprite.prototype.update = function() {
-    if (!this.obj)
+    if (!this.obj || !this.obj.game) /* bug with clear here */
         return;
     this.obj.loadTexture(this.props.texture, this.props.frame || this.obj.frame);
     'width' in this.props && (this.obj.width = DisplayObject._relative(this, 'width', 'width'));

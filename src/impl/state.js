@@ -15,17 +15,21 @@ State.prototype.mount = function() {
         },
         preload: function() {
             that.preload();
+            that.forEach(function(item) {
+                if (item.props.force)
+                    item.invoke('init');
+            });
         },
         create: function() {
             that.forEach(function(item) {
                 item.invoke('init');
             });
-            that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
-            that.props.bounds && this.game.world.setBounds.apply(this.game.world, that.props.bounds);
+            that._setBounds();
             if (that.props.focus) {
                 this.game.camera.x = that.props.focus[0];
                 this.game.camera.y = that.props.focus[1];
             }
+            that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
         },
         render: function(game) {
             that.props.onRender && that.props.onRender(game);
@@ -54,6 +58,21 @@ State.prototype._init = function(node) {
         item.invoke('init');
         that._init(item);
     });
+};
+
+State.prototype._setBounds = function() {
+    if (!this.props.bounds)
+        return;
+    if (Array.isArray(this.props.bounds))
+        this.game.world.setBounds.apply(this.game.world, this.props.bounds);
+    else
+        this.game.world.setBounds.apply(this.game.world, [this.props.bounds.x, this.props.bounds.y, this.props.bounds.width, this.props.bounds.height]);
+};
+
+State.prototype.update = function(prevState) {
+    this.preload();
+    this._setBounds();
+    this.super(State, 'update', arguments);
 };
 
 Object.defineProperties(State.prototype, {
