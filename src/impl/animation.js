@@ -15,7 +15,7 @@ Animation.prototype._frame = function(frame) {
     if (!frame)
         return [0];
 
-    return frame.split(',').reduce((memo, item) => {
+    return frame.split(',').reduce(function (memo, item) {
         if (!~item.indexOf('-'))
             memo.push(parseInt(item, 10));
         else {
