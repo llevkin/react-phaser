@@ -12,5 +12,6 @@ module.exports = {
     events:    require('./input/events'),
     input:     require('./input/input'),
     key:       require('./input/key'),
+    tween:     require('./tween'),
 
 };
