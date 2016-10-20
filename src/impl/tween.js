@@ -19,7 +19,7 @@ Tween.prototype.update = function(prevProps) {
         return;
 
     if (this.obj)
-        return;
+        this.obj.stop();
 
     this.obj = this.game.add
         .tween(this.parentNode.obj)
