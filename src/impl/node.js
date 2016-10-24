@@ -17,6 +17,10 @@ Node.prototype.clear = function() {
 };
 
 Node.prototype.mount = function() {
+    try {
+        this.init();
+    } catch (e) {
+    }
 };
 
 Node.prototype.childrenMount = function() {

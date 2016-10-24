@@ -19,12 +19,11 @@ Tween.prototype.update = function(prevProps) {
         return;
 
     if (this.obj)
-        return;
-        // this.obj.stop();
+        this.obj.stop(true);
 
     this.obj = this.game.add
         .tween(this.parentNode.obj)
-        .to(this.props.props, this.props.time, this.props.easing);
+        .to(this.props.props, this.props.time, this.props.easing, true);
 
     if (this.props.onUpdate)
         this.obj.onUpdateCallback(this.props.onUpdate);
@@ -35,8 +34,6 @@ Tween.prototype.update = function(prevProps) {
     for (var i = events.length; i--;)
         if (this.props[events[i]])
             this.obj[events[i]].add(this.props[events[i]]);
-
-    this.obj.start();
 };
 
 module.exports = Tween;
