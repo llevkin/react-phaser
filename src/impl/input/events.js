@@ -16,10 +16,18 @@ Events.prototype.update = function(prevProps) {
         return;
     if (!this.parentNode.obj.inputEnabled)
         this.parentNode.obj.inputEnabled = true;
-    this.parentNode.obj.input.priorityID = this.props.priorityID || 0;
-    if (prevProps)
-        this.parentNode.obj.events[this.props.name].remove(prevProps.callback);
-    this.parentNode.obj.events[this.props.name].add(this.props.callback);
+    if (this.parentNode.obj.input)
+        this.parentNode.obj.input.priorityID = this.props.priorityID || 0;
+    if (this.parentNode.obj.events) {
+        if (prevProps)
+            this.parentNode.obj.events[this.props.name].remove(prevProps.callback);
+        this.parentNode.obj.events[this.props.name].add(this.props.callback);
+    }
+    if (this.parentNode.obj[this.props.name]) {
+        if (prevProps)
+            this.parentNode.obj[this.props.name].remove(prevProps.callback);
+        this.parentNode.obj[this.props.name].add(this.props.callback);
+    }
 };
 
 module.exports = Events;
