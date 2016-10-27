@@ -36,6 +36,9 @@ State.prototype.mount = function() {
         },
         update: function(game) {
             that.props.onUpdate && that.props.onUpdate(game);
+        },
+        shutdown: function(game) {
+            that.props.onShutdown && that.props.onShutdown(game);
         }
     });
 };
