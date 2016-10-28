@@ -19,6 +19,7 @@ Group.prototype.update = function(prevProps) {
         return;
     if ('inputEnableChildren' in this.props)
         this.obj.inputEnableChildren = this.props.inputEnableChildren;
+    'visible' in this.props && (this.obj.visible = this.props.visible);
     for (var i = 0; i < events.length; i++) {
         event = events[i];
         if (event in this.props) {
