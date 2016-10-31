@@ -8,6 +8,8 @@ function callback(pointer) {
         prevY = pointer.y;
         return;
     }
+    pointer.cX = pointer.game.camera.x + pointer.x;
+    pointer.cY = pointer.game.camera.y + pointer.y;
     pointer.dX = prevX - pointer.x;
     pointer.dY = prevY - pointer.y;
     prevX = pointer.x;

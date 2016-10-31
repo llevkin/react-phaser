@@ -6,6 +6,7 @@ module.exports = {
     sprite:     require('./sprite'),
     tilesprite: require('./tilesprite'),
     group:      require('./group'),
+    ui:         require('./ui'),
     animation:  require('./animation'),
     graphics:   require('./graphics'),
     text:       require('./text'),
