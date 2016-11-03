@@ -16,8 +16,10 @@ Events.prototype.update = function(prevProps) {
         return;
     if (!this.parentNode.obj.inputEnabled)
         this.parentNode.obj.inputEnabled = true;
-    if (this.parentNode.obj.input)
-        this.parentNode.obj.input.priorityID = this.props.priorityID || 0;
+    if ('priorityID' in this.props) {
+        this.parentNode.obj.inputEnabled = true;
+        this.parentNode.obj.input.priorityID = this.props.priorityID;
+    }
     if (this.parentNode.obj.events) {
         if (prevProps)
             this.parentNode.obj.events[this.props.name].remove(prevProps.callback);
