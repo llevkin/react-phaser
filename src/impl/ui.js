@@ -10,8 +10,8 @@ util.inherits(Group, DisplayObject);
 
 Group.prototype.init = function() {
     this.obj     = new Phaser.Group(this.game);
-    this._onOver = function() { this.game.uiMode = true  }.bind(this);
-    this._onOut  = function() { this.game.uiMode = false }.bind(this);
+    this._onOver = function() { this.game.uiMode = true;  }.bind(this);
+    this._onOut  = function() { this.game.uiMode = false; }.bind(this);
     this.super(this.constructor, 'init');
 };
 
@@ -26,7 +26,7 @@ Group.prototype.update = function(prevProps) {
     }
     this.obj.onChildInputOver.add(this._onOver);
     this.obj.onChildInputOut.add(this._onOut);
-    this.game.canvas.onmouseout = () => this.game.uiMode = false;
+    this.game.canvas.onmouseout = function() { this.game.uiMode = false; }.bind(this);
     'visible' in this.props && (this.obj.visible = this.props.visible);
     for (var i = 0; i < events.length; i++) {
         event = events[i];
