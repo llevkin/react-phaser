@@ -18,18 +18,18 @@ function callback(pointer) {
 
 function onUp(pointer) {
     prevX = prevY = 0;
-    pointer.cX = 0;
-    pointer.cY = 0;
-    pointer.dX = 0;
-    pointer.dY = 0;
+    // pointer.cX = 0;
+    // pointer.cY = 0;
+    // pointer.dX = 0;
+    // pointer.dY = 0;
 }
 
 function onDown(pointer) {
     prevX = prevY = 0;
-    pointer.cX = 0;
-    pointer.cY = 0;
-    pointer.dX = 0;
-    pointer.dY = 0;
+    // pointer.cX = 0;
+    // pointer.cY = 0;
+    // pointer.dX = 0;
+    // pointer.dY = 0;
 }
 
 function Input() {
