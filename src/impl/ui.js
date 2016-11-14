@@ -10,8 +10,8 @@ util.inherits(Group, DisplayObject);
 
 Group.prototype.init = function() {
     this.obj = new Phaser.Group(this.game);
-    this._onOver = () => this.game.uiMode = true;
-    this._onOut  = () => this.game.uiMode = false;
+    this._onOver = function() { this.game.uiMode = true  }.bind(this);
+    this._onOut  = function() { this.game.uiMode = false }.bind(this);
     this.super(this.constructor, 'init');
 };
 
