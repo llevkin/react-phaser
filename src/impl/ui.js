@@ -23,13 +23,9 @@ Group.prototype.update = function(prevProps) {
     if (prevProps) {
         this.obj.onChildInputOver.remove(this._onOver);
         this.obj.onChildInputOut.remove(this._onOut);
-        this.obj.onChildInputDown.remove(this._onOver);
-        this.obj.onChildInputUp.remove(this._onOut);
     }
     this.obj.onChildInputOver.add(this._onOver);
     this.obj.onChildInputOut.add(this._onOut);
-    this.obj.onChildInputDown.add(this._onOver);
-    this.obj.onChildInputUp.add(this._onOut);
     this.game.canvas.onmouseout = () => this.game.uiMode = false;
     'visible' in this.props && (this.obj.visible = this.props.visible);
     for (var i = 0; i < events.length; i++) {
