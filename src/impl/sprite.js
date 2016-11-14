@@ -22,7 +22,7 @@ Sprite.prototype.update = function() {
     'priorityID' in this.props && (this.obj.input.priorityID = this.props.priorityID);
     if ('stop-propagation' in this.props) {
         this.obj.inputEnabled = true;
-        this.obj.events[this.props['stop-propagation']].add(() => {});
+        this.obj.events[this.props['stop-propagation']].add(function() {});
     }
     this.super(Sprite, 'update');
 };
