@@ -8,15 +8,15 @@ function callback(pointer) {
         prevY = pointer.y;
         return;
     }
-    pointer.cX = pointer.game.camera.x + pointer.x;
-    pointer.cY = pointer.game.camera.y + pointer.y;
+    // pointer.cX = pointer.game.camera.x + pointer.x;
+    // pointer.cY = pointer.game.camera.y + pointer.y;
     pointer.dX = prevX - pointer.x;
     pointer.dY = prevY - pointer.y;
     prevX = pointer.x;
     prevY = pointer.y;
 }
 
-function clearPrev(pointer) {
+function clearPrev() {
     prevX = prevY = 0;
 }
 
@@ -59,5 +59,17 @@ Input.prototype.clear = function() {
     this.super(Input, 'clear');
     this.root.obj.input.deleteMoveCallback(callback);
 };
+
+Object.defineProperty(Phaser.Pointer.prototype, 'cX', {
+    get: function() {
+        return this.game.camera.x + this.x;
+    }
+});
+
+Object.defineProperty(Phaser.Pointer.prototype, 'cY', {
+    get: function() {
+        return this.game.camera.y + this.y;
+    }
+});
 
 module.exports = Input;
