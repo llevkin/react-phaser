@@ -35,6 +35,8 @@ State.prototype.mount = function() {
             that.props.onRender && that.props.onRender(game);
         },
         update: function(game) {
+            game.input.cX = game.camera.x + game.input._x;
+            game.input.cY = game.camera.y + game.input._y;
             that.props.onUpdate && that.props.onUpdate(game);
         },
         shutdown: function(game) {
