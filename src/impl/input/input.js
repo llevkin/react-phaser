@@ -18,10 +18,6 @@ function callback(pointer) {
 
 function clearPrev(pointer) {
     prevX = prevY = 0;
-    // pointer.cX = 0;
-    // pointer.cY = 0;
-    // pointer.dX = 0;
-    // pointer.dY = 0;
 }
 
 function Input() {
