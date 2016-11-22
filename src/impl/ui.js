@@ -9,9 +9,9 @@ function Group() {
 util.inherits(Group, DisplayObject);
 
 Group.prototype.init = function() {
-    this.obj     = new Phaser.Group(this.game);
-    this._onOver = function() { this.game.uiMode = true;  }.bind(this);
-    this._onOut  = function() { this.game.uiMode = false; }.bind(this);
+    this.obj      = new Phaser.Group(this.game);
+    this._lock    = function() { this.game.uiMode = true;  }.bind(this);
+    this._unlock  = function() { this.game.uiMode = false; }.bind(this);
     this.super(this.constructor, 'init');
 };
 
@@ -21,11 +21,16 @@ Group.prototype.update = function(prevProps) {
         return;
     this.obj.inputEnableChildren = true;
     if (prevProps) {
-        this.obj.onChildInputOver.remove(this._onOver);
-        this.obj.onChildInputOut.remove(this._onOut);
+        this.obj.onChildInputOver.remove(this._lock);
+        this.obj.onChildInputOut.remove(this._unlock);
+        // this.obj.onChildInputDown.remove(this._lock);
+        // this.obj.onChildInputUp.remove(this._unlock);
     }
-    this.obj.onChildInputOver.add(this._onOver);
-    this.obj.onChildInputOut.add(this._onOut);
+    // this.obj.children.forEach(function(item) { if (item.input) item.input.priorityID = Infinity; })
+    this.obj.onChildInputOver.add(this._lock);
+    this.obj.onChildInputOut.add(this._unlock);
+    // this.obj.onChildInputDown.add(this._lock);
+    // this.obj.onChildInputUp.add(this._unlock);
     this.game.canvas.onmouseout = function() { this.game.uiMode = false; }.bind(this);
     'visible' in this.props && (this.obj.visible = this.props.visible);
     for (var i = 0; i < events.length; i++) {
