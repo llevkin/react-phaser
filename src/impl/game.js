@@ -39,7 +39,7 @@ Game.prototype.update = function() {
     }
     this.game.state.start(this.props.state);
     if (this.tree.byname[this.props.state])
-        this.tree.byname[this.props.state]._init();
+        this.tree.byname[this.props.state].init();
 };
 
 Object.defineProperties(Game.prototype, {
