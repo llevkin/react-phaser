@@ -15,7 +15,7 @@ function callback(pointer) {
 }
 
 function clearPrev() {
-    prevX = prevY = 0;
+    prevX = prevY = null;
 }
 
 function Input() {
