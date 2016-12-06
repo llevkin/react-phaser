@@ -8,6 +8,9 @@ util.inherits(Graphics, DisplayObject);
 
 Graphics.prototype.init = function() {
     this.obj = new Phaser.Graphics(this.game);
+    /** !START BUG! remove then Phaser.io bug will be closed: https://github.com/photonstorm/phaser/issues/2152 */
+    this.obj.cacheAsBitmap = true;
+    /** !END BUG! */
     this.super(Graphics, 'init');
 };
 
