@@ -16,6 +16,8 @@ Text.prototype.update = function() {
         return;
     this.obj.text = String(this.props.text);
     this.obj.setStyle(this.props.style || {});
+    if ('lineSpacing' in this.props)
+        this.obj.lineSpacing = this.props.lineSpacing;
     this.super(Text, 'update');
 };
 
