@@ -46,6 +46,9 @@ DisplayObject.prototype.update = function() {
     if ('angle' in this.props) {
         this.obj.angle = this.props.angle | 0;
     }
+    if ('alpha' in this.props) {
+        this.obj.alpha = parseFloat(this.props.alpha);
+    }
     if (this.props.fixedToCamera) {
         this.obj.fixedToCamera = this.props.fixedToCamera;
     }
