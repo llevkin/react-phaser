@@ -91,13 +91,13 @@ Object.defineProperties(Node.prototype, {
     },
 
     preload: {
-         value: function() {
-             var keys;
-             if (!this.props.assets)
+         value: function(assets) {
+             var keys, assets = this.props.assets || assets;
+             if (!assets)
                  return;
-             keys = Object.keys(this.props.assets);
+             keys = Object.keys(assets);
              keys.forEach(function (key, i) {
-                 var asset = this.props.assets[key];
+                 var asset = assets[key];
                  if (this.game.cache.checkImageKey(key))
                      return void this.game.load.onFileComplete.dispatch(Math.floor(keys.length / i));
                  switch (asset.type) {

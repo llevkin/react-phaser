@@ -79,7 +79,8 @@ State.prototype._setBounds = function() {
 };
 
 State.prototype.update = function(prevState) {
-    // this.preload();
+    // if (!prevState && this.props.assets || this.props.assets != prevState.assets)
+    //     this.preload();
     this._setBounds();
     this.super(State, 'update', arguments);
 };
