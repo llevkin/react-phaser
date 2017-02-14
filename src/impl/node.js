@@ -92,12 +92,14 @@ Object.defineProperties(Node.prototype, {
 
     preload: {
          value: function() {
+             var keys;
              if (!this.props.assets)
                  return;
-             Object.keys(this.props.assets).forEach(function (key) {
+             keys = Object.keys(this.props.assets);
+             keys.forEach(function (key, i) {
                  var asset = this.props.assets[key];
                  if (this.game.cache.checkImageKey(key))
-                     return;
+                     return void this.game.load.onFileComplete.dispatch(Math.floor(keys.length / i));
                  switch (asset.type) {
                      case 'image':
                          this.game.load.image(key, asset.src);

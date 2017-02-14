@@ -12,6 +12,8 @@ State.prototype.mount = function() {
         init: function() {
             that.props.onFileComplete && this.game.load.onFileComplete.add(that.props.onFileComplete);
             that.props.onFileError && this.game.load.onFileError.add(that.props.onFileError);
+            that.props.onLoadComplete && this.game.load.onLoadComplete.add(that.props.onLoadComplete);
+            that.props.onLoadStart && this.game.load.onLoadStart.add(that.props.onLoadStart);
         },
         preload: function() {
             that.preload();
@@ -39,6 +41,10 @@ State.prototype.mount = function() {
         },
         shutdown: function(game) {
             that.props.onShutdown && that.props.onShutdown(game);
+            this.game.load.onFileComplete.removeAll();
+            this.game.load.onFileError.removeAll();
+            this.game.load.onLoadComplete.removeAll();
+            this.game.load.onLoadStart.removeAll();
         }
     });
 };
@@ -73,7 +79,7 @@ State.prototype._setBounds = function() {
 };
 
 State.prototype.update = function(prevState) {
-    this.preload();
+    // this.preload();
     this._setBounds();
     this.super(State, 'update', arguments);
 };

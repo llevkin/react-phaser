@@ -12,6 +12,8 @@ Game.prototype.mount = function() {
         init: function() {
             that.props.onFileComplete && this.game.load.onFileComplete.add(that.props.onFileComplete);
             that.props.onFileError && this.game.load.onFileError.add(that.props.onFileError);
+            that.props.onLoadComplete && this.game.load.onLoadComplete.add(that.props.onLoadComplete);
+            that.props.onLoadStart && this.game.load.onLoadStart.add(that.props.onLoadStart);
         },
         preload: function() {
             that.preload();
@@ -21,6 +23,12 @@ Game.prototype.mount = function() {
             that.props.onCreate && that.props.onCreate(that.tree.root.obj, function(name) { return that.tree.byname[name]; });
         },
         update: function() {
+        },
+        shutdown: function() {
+            this.game.load.onFileComplete.removeAll();
+            this.game.load.onFileError.removeAll();
+            this.game.load.onLoadComplete.removeAll();
+            this.game.load.onLoadStart.removeAll();
         }
     });
 };
