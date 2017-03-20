@@ -18,6 +18,15 @@ Text.prototype.update = function() {
     this.obj.setStyle(this.props.style || {});
     if ('lineSpacing' in this.props)
         this.obj.lineSpacing = this.props.lineSpacing;
+    if ('colors' in this.props) {
+        this.obj.clearColors();
+        if ('fill' in this.props.colors)
+            for (var color of this.props.colors.fill)
+                this.obj.addColor(...color);
+        if ('stroke' in this.props.colors)
+            for (var color of this.props.colors.stroke)
+                this.obj.addStrokeColor(...color);
+    }
     this.super(Text, 'update');
 };
 
