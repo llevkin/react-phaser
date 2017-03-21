@@ -4,6 +4,7 @@ module.exports = {
     game:           require('./game'),
     state:          require('./state'),
     sprite:         require('./sprite'),
+    image:          require('./image'),
     tilesprite:     require('./tilesprite'),
     group:          require('./group'),
     spritebatch:    require('./spritebatch'),
