@@ -55,6 +55,9 @@ DisplayObject.prototype.update = function() {
     if ('data' in this.props) {
         _.merge(this.obj.data, this.props.data);
     }
+    if ('filters' in this.props) {
+        this.obj.filters = this.props.filters;
+    }
     this.super(DisplayObject, 'update');
 };
 
