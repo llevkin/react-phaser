@@ -9,7 +9,7 @@ module.exports = {
     tilesprite:     require('./tilesprite'),
     group:          require('./group'),
     spritebatch:    require('./spritebatch'),
-    // ui:         require('./ui'),
+
     animation:      require('./animation'),
     graphics:       require('./graphics'),
     text:           require('./text'),
